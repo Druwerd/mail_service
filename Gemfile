@@ -1,14 +1,16 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-# gem "rails"
-gem 'rake'
-gem 'sinatra'
+gem 'activerecord'
+gem 'foreman'
 gem 'json'
-gem "activerecord"
-gem "sinatra-activerecord"
-gem "sanitize"
-gem "pg"
+gem 'pg'
+gem 'rake'
+gem 'resque'
+gem 'sanitize'
+gem 'sinatra'
+gem 'sinatra-activerecord'
+gem 'unicorn'
 
 group :test do
   gem 'rspec'

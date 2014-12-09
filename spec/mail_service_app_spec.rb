@@ -22,7 +22,7 @@ describe 'MailService App' do
     }
 
     it "sends an email" do
-      post '/email', { :message => message }, {:content_type => :json, :accept => :json}
+      post '/email', message, {:content_type => :json, :accept => :json}
       expect(last_response).to be_ok
       json_response = JSON.parse(last_response.body)
       expect(json_response["success"]).to eq("ok")
@@ -30,7 +30,7 @@ describe 'MailService App' do
     end
 
     it "converts the body HTML to plain text" do
-      post '/email', { :message => message }, {:content_type => :json, :accept => :json}
+      post '/email', message, {:content_type => :json, :accept => :json}
       expect(last_response).to be_ok
       json_response = JSON.parse(last_response.body)
       message_body = Message.find(json_response["message_id"]).body
@@ -83,19 +83,24 @@ describe 'MailService App' do
     }
 
     it "returns an error when fields are missing" do
-      post '/email', { :message => message_with_blank_to_field }, {:content_type => :json, :accept => :json}
+      post '/email', message_with_blank_to_field, {:content_type => :json, :accept => :json}
       expect(last_response).to be_server_error
 
-      post '/email', { :message => message_with_missing_subject_field }, {:content_type => :json, :accept => :json}
+      post '/email', message_with_missing_subject_field, {:content_type => :json, :accept => :json}
       expect(last_response).to be_server_error
     end
 
     it "returns an error when email address is invalid" do
-      post '/email', { :message => message_with_invalid_to_email }, {:content_type => :json, :accept => :json}
+      post '/email', message_with_invalid_to_email, {:content_type => :json, :accept => :json}
       expect(last_response).to be_server_error
 
-      post '/email', { :message => message_with_invalid_from_email }, {:context_type => :json, :accept => :json}
+      post '/email', message_with_invalid_from_email, {:context_type => :json, :accept => :json}
       expect(last_response).to be_server_error
+    end
+
+    it "returns an error when no message data is provided" do
+      post '/email', {}
+      expect(last_response).to be_bad_request
     end
   end
   
