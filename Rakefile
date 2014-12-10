@@ -1,12 +1,8 @@
 require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 require "rspec/core/rake_task"
-
-namespace :db do
-  task :load_config do
-    require './config/environments.rb'
-  end
-end
+require 'resque/tasks'
+require './jobs/send_mail_job'
 
 # Default directory to look in is `/specs`
 # Run with `rake spec`

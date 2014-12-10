@@ -1,8 +1,4 @@
-require 'bundler'
-Bundler.require
-require './config/environments' #database configuration
-require './models/message'
-
+require './app/init'
 
 post '/email' do
   content_type :json

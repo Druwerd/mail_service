@@ -5,9 +5,14 @@ class Message < ActiveRecord::Base
   validates :to, :from, format: { with: EMAIL_FORMAT_REGEX }
 
   before_save :remove_html_tags
+  after_create :enqueue_send_mail_job
 
   private
   def remove_html_tags
     self.body = Sanitize.fragment(self.body).strip.split(/\s+/).join(" ")
+  end
+
+  def enqueue_send_mail_job
+    Resque.enqueue(SendMailJob, self.id)
   end
 end
