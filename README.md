@@ -13,8 +13,8 @@ is a self contained unit which can be tested, rewritten and replaced should the 
 of this application change.
 
 This design takes performance into consideration. The high latency tasks of connecting to
-email service provider APIs are done asynchronously in background Resque workers. This allows the
-HTTP service to process to process incoming web request quickly. This design is also scalable.
+email service provider APIs are done asynchronously using background Resque workers. This allows the
+HTTP service to process incoming web request quickly. This design is also scalable.
 More servers or process workers can be added to the HTTP service and the background workers
 independently to increase the load capacity.
 
