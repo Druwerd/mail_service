@@ -4,8 +4,8 @@ HTTP service to send emails via multiple email service providers.
 
 ## System Dependencies
 
-PostgreSQL
-Redis
+* PostgreSQL
+* Redis
 
 ## Installation
 
