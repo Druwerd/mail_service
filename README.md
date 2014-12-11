@@ -8,9 +8,9 @@ The architectural design of this application is split into two main components:
 2. Background workers to process outgoing HTTP connections to email services.
 
 This design keeps functionally in modular components which allows for isolated testing
-of different functionality. The http_mailer gem created specifically for this application
-is a self contained unit which can be tested, rewritten and replaced should the requirements
-of this application change.
+of different functionality. The [http_mailer](https://github.com/Druwerd/http_mailer) 
+gem created specifically for this application is a self contained unit which can be tested, 
+rewritten and replaced should the requirementsof this application change.
 
 This design takes performance into consideration. The high latency tasks of connecting to
 email service provider APIs are done asynchronously using background Resque workers. This allows the
