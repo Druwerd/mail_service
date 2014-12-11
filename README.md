@@ -7,9 +7,9 @@ The architectural design of this application is split into two main components:
 1. HTTP service with data storage to process incoming web requests.
 2. Background workers to process outgoing HTTP connections to email services.
 
-This design keeps functionally in modular components with allows for isolated testing
+This design keeps functionally in modular components which allows for isolated testing
 of different functionality. The http_mailer gem created specifically for this application
-is a self contained unit with can be tested, rewritten and replaced should the requirements
+is a self contained unit which can be tested, rewritten and replaced should the requirements
 of this application change.
 
 This design takes performance into consideration. The high latency tasks of connecting to
