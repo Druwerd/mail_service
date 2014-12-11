@@ -41,8 +41,8 @@ Then run using foreman:
 
 ## Language and Technology choices
 
-* Ruby - because it is simple yet powerful with many useful tools and libraries available.
-* Sinatra - because it is lightweight and a good choice for a web service with a small number of end points.
+* Ruby is simple, expresive, and powerful with many useful tools and libraries available.
+* Sinatra is lightweight and a good choice for a web service with a small number of end points such as this one.
 
 ## Future Expansion
 
