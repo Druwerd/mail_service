@@ -1,3 +1,5 @@
+# The main app file
+
 require './app/init'
 
 post '/email' do

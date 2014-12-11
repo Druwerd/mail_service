@@ -1,0 +1,14 @@
+# Example configuration for http_mailer
+# Rename this file to http_mailer.yml
+
+sendgrid:
+  host: "sendgrid.com"
+  api_user: "user"
+  api_key: "XXXXXXXXXXXX"
+mailgun:
+  host: "api.mailgun.net"
+  api_key: "key-XXXXXXXXXXXX"
+  subdomain: "sandbox.mailgun.org"
+mandrill:
+  host: "mandrillapp.com"
+  api_key: "XXXXXXXXXXXX"

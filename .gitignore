@@ -1,1 +1,2 @@
 *.rdb
+config/http_mailer.yml
