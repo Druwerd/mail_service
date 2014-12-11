@@ -15,7 +15,8 @@ describe SendMailJob do
     }
 
     it 'send an email' do
-      expect(SendMailJob.perform(message.id).code).to be 200
+      expect(SendMailJob.perform(message.id)).to be true
+      expect(message.reload.delivered).to be true
     end
   end
 

@@ -25,7 +25,7 @@ GEM
     foreman (0.76.0)
       dotenv (~> 1.0.2)
       thor (~> 0.19.1)
-    http_mailer (0.0.5)
+    http_mailer (1.0.0)
       rest-client (~> 1.7.2)
     i18n (0.6.11)
     json (1.8.1)
@@ -106,7 +106,7 @@ DEPENDENCIES
   activerecord
   activesupport
   foreman
-  http_mailer (= 0.0.5)
+  http_mailer (= 1.0.0)
   json
   pg
   rack-test

@@ -7,6 +7,7 @@ class SendMailJob
 
   def self.perform(message_id)
     message = Message.find(message_id)
+
     response = HTTP_MAILER.send_message(
       message.from,
       message.to,
@@ -15,7 +16,12 @@ class SendMailJob
       message.from_name,
       message.to_name
     )
-    #puts response.inspect
+
+    if response.code == 200
+      message.update(delivered: true)
+    else
+      false
+    end
 
   end
 

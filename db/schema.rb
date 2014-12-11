@@ -17,12 +17,13 @@ ActiveRecord::Schema.define(version: 20141209023715) do
   enable_extension "plpgsql"
 
   create_table "messages", force: true do |t|
-    t.string "to"
-    t.string "to_name"
-    t.string "from"
-    t.string "from_name"
-    t.string "subject"
-    t.string "body"
+    t.string  "to"
+    t.string  "to_name"
+    t.string  "from"
+    t.string  "from_name"
+    t.string  "subject"
+    t.string  "body"
+    t.boolean "delivered", default: false
   end
 
 end
