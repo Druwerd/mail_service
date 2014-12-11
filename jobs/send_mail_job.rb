@@ -15,7 +15,7 @@ class SendMailJob
       message.from_name,
       message.to_name
     )
-    puts response.inspect
+    #puts response.inspect
 
   end
 
