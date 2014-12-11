@@ -14,7 +14,7 @@ of this application change.
 
 This design takes performance into consideration. The high latency tasks of connecting to
 email service provider APIs are done asynchronously using background Resque workers. This allows the
-HTTP service to process incoming web request quickly. This design is also scalable.
+HTTP service to process incoming web requests quickly. This design is also scalable.
 More servers or process workers can be added to the HTTP service and the background workers
 independently to increase the load capacity.
 
