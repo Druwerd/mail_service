@@ -2,6 +2,22 @@
 
 HTTP service to send emails via multiple email service providers.
 
+The architectural design of this application is split into two main components:
+
+1. HTTP service with data storage to process incoming web requests.
+2. Background workers to process outgoing HTTP connections to email services.
+
+This design keeps functionally in modular components with allows for isolated testing
+of different functionality. The http_mailer gem created specifically for this application
+is a self contained unit with can be tested, rewritten and replaced should the requirements
+of this application change.
+
+This design takes performance into consideration. The high latency tasks of connecting to
+email service provider APIs are done asynchronously in background Resque workers. This allows the
+HTTP service to process to process incoming web request quickly. This design is also scalable.
+More servers or process workers can be added to the HTTP service and the background workers
+independently to increase the load capacity.
+
 ## System Dependencies
 
 * PostgreSQL
@@ -22,6 +38,19 @@ Then run using foreman:
 ## Usage
 
     $ curl -H "Content-Type: application/json" -d '{"to":"fake@example.com","to_name":"Ms. Fake","from":"noreply@uber.com","from_name":"Uber","subject":"A Message from Uber","body":"\u003ch1\u003eYour Bill\u003c/h1\u003e\u003cp\u003e$10\u003c/p\u003e"}' localhost:5000/email
+
+## Language and Technology choices
+
+* Ruby - because it is simple yet powerful with many useful tools and libraries available.
+* Sinatra - because it is lightweight and a good choice for a web service with a small number of end points.
+
+## Future Expansion
+
+Make the order in which email service providers are connected to configurable.
+
+The application tracks whether a email was delivered or not using a 
+boolean field in the data record of each message. Add a mechanism to retry sending 
+undelivered emails.
 
 ## Contributing
 
